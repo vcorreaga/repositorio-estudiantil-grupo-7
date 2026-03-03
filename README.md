@@ -60,9 +60,9 @@ Desarrollar una API REST con Spring Boot para gestionar estudiantes y sus proyec
 ## Tecnologías y Herramientas (Tech Stack)
 
 - **Backend**: Spring Boot 3.5.11, Java 21, Spring Data JPA  
+- **Frontend**: No implementado en esta versión (API únicamente)  
 - **Base de datos**: PostgreSQL (configurable), modelado en DBeaver  
-- **Modelado conceptual**: Prisma (para definición estructural del dominio)  
-- **ORM en el proyecto**: JPA (anotaciones en entidades)  
+- **ORM**: JPA (anotaciones en entidades)  
 - **Control de versiones**: Git y GitHub  
 - **Herramientas adicionales**: Maven, Lombok  
 
@@ -70,23 +70,24 @@ Desarrollar una API REST con Spring Boot para gestionar estudiantes y sus proyec
 
 ## Integrantes del Equipo
 
-| Nombre               | Rol principal               | Usuario GitHub        |
-|----------------------|-----------------------------|---------------------- |
-| Mariana              | Backend / Modelado BD       | @[Mariana20209]       |
-| Santiago             | Backend                     | @[SantiagoCalderon11] |
-| Viadis               | Documentación / Soporte     | @[vcorreaga]          |
+| Nombre     | Rol principal              | Usuario GitHub        |
+|------------|---------------------------|-----------------------|
+| Mariana    | Backend / Modelado BD     | @[Mariana20209]       |
+| Santiago   | Backend                   | @[SantiagoCalderon11] |
+| Viadis     | Documentación / Soporte   | @[vcorreaga]          |
 
-
+---
 
 ## Diagrama de Clases del Dominio (v1)
 
 ![Diagrama de Dominio v1](docs/diagrama-dominio-v1.png)
 
-Diagrama inicial del modelo de dominio – versión 1.  
+*Diagrama inicial del modelo de dominio – versión 1. Se actualizará en futuras entregas.*
+
 Incluye las entidades:
 
-- Estudiante
-- Proyecto
+- Estudiante  
+- Proyecto  
 
 Relación principal:  
 Un Estudiante puede tener múltiples Proyectos (1:N).
@@ -97,44 +98,41 @@ Un Estudiante puede tener múltiples Proyectos (1:N).
 
 ### Entidad Estudiante
 
-- id (Long)
-- nombre
-- email (único)
-- carrera
-- semestre
-- universidad
-- createdAt
-- updatedAt
+- id (Long)  
+- nombre  
+- email (único)  
+- carrera  
+- semestre  
+- universidad  
+- createdAt  
+- updatedAt  
 
 Relación:
 
 ```java
 @OneToMany(mappedBy = "estudiante")
 private List<Proyecto> proyectos;
-Entidad Proyecto
+```
 
-id (Long)
+---
 
-titulo
+### Entidad Proyecto
 
-descripcion
-
-area
-
-fechaEntrega
-
-createdAt
-
-updatedAt
+- id (Long)  
+- titulo  
+- descripcion  
+- area  
+- fechaEntrega  
+- createdAt  
+- updatedAt  
 
 Relación:
 
+```java
 @ManyToOne
 @JoinColumn(name = "estudiante_id", nullable = false)
 private Estudiante estudiante;
-
-
-#Estructura del Proyecto
+```
 
 
 ## Estructura del Proyecto
@@ -183,4 +181,27 @@ repositorio-estudiantil-grupo-7/
 ├── README.md
 └── docs/
     └── diagrama-dominio-v1.png
-    
+
+## Instrucciones de Instalación y Ejecución
+
+1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Mariana20209/repositorio-estudiantil-grupo-7.git
+```
+
+2. Ingresar al proyecto
+
+```bash
+cd repositorio-estudiantil-grupo-7
+```
+
+3. Ejecutar la aplicación
+
+```bash
+mvn spring-boot:run
+```
+
+4. Acceder a la API en:
+
+http://localhost:8080
