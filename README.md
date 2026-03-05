@@ -182,25 +182,31 @@ repositorio-estudiantil-grupo-7/
 └── docs/
     └── diagrama-dominio-v1.png
 
+
+
+
 ## Instrucciones de Instalación y Ejecución
 
-1. Clonar el repositorio
 
-```bash
+1. Clonar el repositorio
 git clone https://github.com/Mariana20209/repositorio-estudiantil-grupo-7.git
-```
 
 2. Ingresar al proyecto
-
-```bash
 cd repositorio-estudiantil-grupo-7
-```
 
-3. Ejecutar la aplicación
+3.Configuarar base de datos
+src/main/resources/application.properties
+spring.datasource.url=jdbc:postgresql://db.prisma.io:5432/postgres?sslmode=require
+spring.datasource.username=d829c1d01055aa0acd156d59ff8d59382898f7bd3c83d31cba9ae443cda37c61
+spring.datasource.password=sk_MTMaG9gd-w1Fxfq_0iPwA
+spring.datasource.driver-class-name=org.postgresql.Driver
 
-```bash
-mvn spring-boot:run
-```
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+4. Ejecutar la aplicación
+.\mvnw.cmd spring-boot:run
 
 4. Acceder a la API en:
 
